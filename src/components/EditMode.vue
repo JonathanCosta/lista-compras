@@ -192,7 +192,7 @@ async function handleUncheckAll() {
               data-testid="input-item-qty"
               type="number"
               :value="item.quantity"
-              min="1"
+              min="0"
               title="Quantidade"
               class="w-12 px-1 py-1 text-sm border border-[#e5e7eb] rounded text-center focus:outline-none transition-colors focus:border-[#FFD700]"
               @change="handleUpdateItem(item.id, 'quantity', ($event.target).value)"

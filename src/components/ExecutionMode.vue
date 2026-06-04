@@ -15,7 +15,8 @@ async function loadData() {
   loading.value = true
   categories.value = await getCategories()
   for (const cat of categories.value) {
-    itemsByCategory.value[cat.id] = await getItemsByCategory(cat.id)
+    const allItems = await getItemsByCategory(cat.id)
+    itemsByCategory.value[cat.id] = allItems.filter(i => i.quantity > 0)
   }
   loading.value = false
 }

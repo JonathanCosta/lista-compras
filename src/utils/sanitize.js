@@ -5,7 +5,7 @@ export function sanitizePrice(value) {
 
 export function sanitizeQuantity(value) {
   const num = parseInt(value, 10)
-  return isNaN(num) || num < 1 ? 1 : num
+  return isNaN(num) || num < 0 ? 1 : num
 }
 
 export function sanitizeString(value) {

@@ -18,11 +18,28 @@ const fileInput = ref(null)
 async function shareList() {
   const data = await exportToJSON()
   const text = formatShareText(data.categories, data.items)
+
   if (navigator.share) {
-    await navigator.share({ title: 'SmartCheck - Minha Lista', text })
-  } else {
+    try {
+      await navigator.share({
+        title: 'SmartCheck - Minha Lista',
+        text,
+        url: window.location.href,
+      })
+      return
+    } catch (e) {
+      if (e.name !== 'AbortError') {
+        console.warn('[shareList] Web Share API falhou:', e)
+      }
+    }
+  }
+
+  try {
     await navigator.clipboard.writeText(text)
     success('Lista copiada para a área de transferência!')
+  } catch (e) {
+    console.error('[shareList] Clipboard também falhou:', e)
+    error('Não foi possível compartilhar. Tente copiar manualmente.')
   }
 }
 
