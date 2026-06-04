@@ -1,0 +1,24 @@
+{
+  "name": "lista-compras",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@lucide/vue": "^1.17.0",
+    "dexie": "^4.0.11",
+    "vue": "^3.5.13"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.60.0",
+    "@tailwindcss/vite": "^4.1.4",
+    "@vitejs/plugin-vue": "^5.2.3",
+    "tailwindcss": "^4.1.4",
+    "vite": "^6.3.2",
+    "vite-plugin-pwa": "^1.0.0"
+  }
+}

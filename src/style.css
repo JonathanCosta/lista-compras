@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+:root {
+  --color-brand: #008080;
+  --color-gold: #FFD700;
+  --color-text: #333333;
+  --color-deep: #003366;
+  --color-bg: #f3f4f5;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+input, select, button {
+  font-family: inherit;
+}
