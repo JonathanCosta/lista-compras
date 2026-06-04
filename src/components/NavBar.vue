@@ -80,9 +80,18 @@ async function handleImport(e) {
   <header class="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
     <div class="max-w-lg mx-auto px-4 h-14 flex items-center justify-between">
       <div class="flex items-center gap-2">
-        <img src="/favicon.svg" alt="SmartCheck" class="size-7" />
+        <img
+          src="/favicon.svg"
+          alt="SmartCheck"
+          class="size-7"
+        >
         <div class="flex flex-col leading-tight">
-          <h1 class="text-base font-extrabold" style="color: var(--color-brand);">SmartCheck</h1>
+          <h1
+            class="text-base font-extrabold"
+            style="color: var(--color-brand);"
+          >
+            SmartCheck
+          </h1>
           <span class="text-[10px] font-medium tracking-tight text-gray-400">Compras Inteligentes</span>
         </div>
       </div>
@@ -90,35 +99,41 @@ async function handleImport(e) {
       <div class="flex items-center gap-1">
         <button
           data-testid="toggle-mode"
-          @click="toggleMode"
           :style="mode === 'edit'
             ? { backgroundColor: 'var(--color-brand)', color: '#ffffff' }
             : { backgroundColor: '#FFD700', color: '#333333' }"
           class="flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-semibold transition-all duration-200"
           :aria-label="mode === 'edit' ? 'Alternar para modo execução' : 'Alternar para modo edição'"
+          @click="toggleMode"
         >
-          <Edit3 v-if="mode === 'edit'" class="size-4" />
-          <ShoppingCart v-else class="size-4" />
+          <Edit3
+            v-if="mode === 'edit'"
+            class="size-4"
+          />
+          <ShoppingCart
+            v-else
+            class="size-4"
+          />
           {{ mode === 'edit' ? 'Edição' : 'Compras' }}
         </button>
 
         <button
           data-testid="share-btn"
-          @click="shareList"
           class="p-2 rounded-lg transition-colors duration-150 hover:text-[var(--color-brand)]"
           style="color: #999;"
           aria-label="Compartilhar lista"
+          @click="shareList"
         >
           <Share2 class="size-5" />
         </button>
 
         <button
           data-testid="export-btn"
-          @click="exportBackup"
           class="p-2 rounded-lg transition-colors duration-150 hover:text-[var(--color-brand)]"
           style="color: #999;"
           aria-label="Exportar backup"
           title="Exportar backup"
+          @click="exportBackup"
         >
           <Download class="size-5" />
         </button>
@@ -129,14 +144,14 @@ async function handleImport(e) {
           accept=".json"
           class="hidden"
           @change="handleImport"
-        />
+        >
         <button
           data-testid="import-btn"
-          @click="triggerImport"
           class="p-2 rounded-lg transition-colors duration-150 hover:text-[var(--color-brand)]"
           style="color: #999;"
           aria-label="Importar backup"
           title="Importar backup"
+          @click="triggerImport"
         >
           <Upload class="size-5" />
         </button>

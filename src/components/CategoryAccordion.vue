@@ -27,11 +27,14 @@ const checkedCount = computed(() => props.items.filter(i => i.isChecked).length)
       :data-testid="'accordion-' + category.id"
       :aria-expanded="isOpen"
       :aria-controls="'accordion-panel-' + category.id"
-      @click="emit('toggle', category.id)"
       class="w-full px-4 py-3 flex items-center justify-between transition-colors duration-150 bg-[#f9fafb] hover:bg-[#f0fdfa]"
+      @click="emit('toggle', category.id)"
     >
       <div class="flex items-center gap-2">
-        <span class="font-bold" style="color: var(--color-text);">{{ category.name }}</span>
+        <span
+          class="font-bold"
+          style="color: var(--color-text);"
+        >{{ category.name }}</span>
         <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-[#e5e7eb] text-[#6b7280]">
           {{ checkedCount }}/{{ items.length }}
         </span>
@@ -46,11 +49,25 @@ const checkedCount = computed(() => props.items.filter(i => i.isChecked).length)
       @enter="(el) => { el.style.maxHeight = el.scrollHeight + 'px'; el.style.opacity = '1' }"
       @leave="(el) => { el.style.maxHeight = '0'; el.style.opacity = '0' }"
     >
-      <div v-if="isOpen" :id="'accordion-panel-' + category.id" role="region" class="transition-all duration-200 ease-in-out overflow-hidden">
-        <div v-if="items.length === 0" data-testid="empty-category" class="px-4 py-3 text-sm text-center" style="color: #9ca3af;">
+      <div
+        v-if="isOpen"
+        :id="'accordion-panel-' + category.id"
+        role="region"
+        class="transition-all duration-200 ease-in-out overflow-hidden"
+      >
+        <div
+          v-if="items.length === 0"
+          data-testid="empty-category"
+          class="px-4 py-3 text-sm text-center"
+          style="color: #9ca3af;"
+        >
           Nenhum item nesta categoria
         </div>
-        <div v-else class="divide-y" style="border-color: #f3f4f6;">
+        <div
+          v-else
+          class="divide-y"
+          style="border-color: #f3f4f6;"
+        >
           <ItemRow
             v-for="item in sortedItems"
             :key="item.id"

@@ -17,11 +17,20 @@ function handleImported() {
 </script>
 
 <template>
-  <div class="min-h-screen flex flex-col" style="background-color: var(--color-bg);">
+  <div
+    class="min-h-screen flex flex-col"
+    style="background-color: var(--color-bg);"
+  >
     <NavBar @imported="handleImported" />
     <main class="flex-1">
-      <EditMode v-if="mode === 'edit'" :key="importVersion" />
-      <ExecutionMode v-else :key="importVersion" />
+      <EditMode
+        v-if="mode === 'edit'"
+        :key="importVersion"
+      />
+      <ExecutionMode
+        v-else
+        :key="importVersion"
+      />
     </main>
     <FooterTotals />
     <Toast />

@@ -20,8 +20,16 @@ const { toasts } = useToast()
             color: 'var(--color-text)',
           }"
         >
-          <CircleCheck v-if="t.type === 'success'" class="size-5 shrink-0" style="color: var(--color-brand);" />
-          <CircleX v-else class="size-5 shrink-0" style="color: #ef4444;" />
+          <CircleCheck
+            v-if="t.type === 'success'"
+            class="size-5 shrink-0"
+            style="color: var(--color-brand);"
+          />
+          <CircleX
+            v-else
+            class="size-5 shrink-0"
+            style="color: #ef4444;"
+          />
           <span>{{ t.message }}</span>
         </div>
       </TransitionGroup>

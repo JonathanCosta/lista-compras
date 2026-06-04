@@ -29,13 +29,26 @@ function toggleCategory(id) {
 </script>
 
 <template>
-  <div v-if="loading" class="max-w-lg mx-auto px-4 pb-24 pt-4 text-center text-sm" style="color: #9ca3af;">
+  <div
+    v-if="loading"
+    class="max-w-lg mx-auto px-4 pb-24 pt-4 text-center text-sm"
+    style="color: #9ca3af;"
+  >
     Carregando...
   </div>
-  <div v-else class="max-w-lg mx-auto px-4 pb-24 pt-4 space-y-3">
+  <div
+    v-else
+    class="max-w-lg mx-auto px-4 pb-24 pt-4 space-y-3"
+  >
     <div class="flex items-center gap-2 mb-4">
-      <span class="w-1 h-5 rounded-full" style="background-color: var(--color-brand);"></span>
-      <span class="text-xs font-bold uppercase tracking-wider" style="color: var(--color-brand);">Modo Compras</span>
+      <span
+        class="w-1 h-5 rounded-full"
+        style="background-color: var(--color-brand);"
+      />
+      <span
+        class="text-xs font-bold uppercase tracking-wider"
+        style="color: var(--color-brand);"
+      >Modo Compras</span>
     </div>
 
     <QuickAdd @added="loadData" />

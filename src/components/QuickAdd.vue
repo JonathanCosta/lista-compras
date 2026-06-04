@@ -32,26 +32,30 @@ async function handleAdd() {
 <template>
   <div class="flex gap-2">
     <input
-      data-testid="input-quick-add"
       v-model="name"
+      data-testid="input-quick-add"
       placeholder="Adicionar item..."
       class="flex-1 px-3 py-2 border border-[#d1d5db] rounded-lg text-sm focus:outline-none transition-colors focus:border-[var(--color-brand)]"
       @keyup.enter="handleAdd"
-    />
+    >
     <select
-      data-testid="select-quick-category"
       v-model="categoryId"
+      data-testid="select-quick-category"
       class="px-2 py-2 border border-[#d1d5db] rounded-lg text-sm focus:outline-none transition-colors bg-white focus:border-[var(--color-brand)]"
     >
-      <option v-for="cat in categories" :key="cat.id" :value="cat.id">
+      <option
+        v-for="cat in categories"
+        :key="cat.id"
+        :value="cat.id"
+      >
         {{ cat.name }}
       </option>
     </select>
     <button
       data-testid="btn-quick-add"
-      @click="handleAdd"
       class="px-3 py-2 rounded-lg text-white font-bold transition-all duration-200 bg-[var(--color-brand)] hover:bg-[#006666]"
       aria-label="Adicionar item"
+      @click="handleAdd"
     >
       <Plus class="size-5" />
     </button>

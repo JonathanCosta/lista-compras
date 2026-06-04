@@ -4,9 +4,7 @@ import { Trash2, Plus, Check, ShoppingBag } from '@lucide/vue'
 import { useDb } from '../composables/useDb'
 import { useToast } from '../composables/useToast'
 import { useConfirm } from '../composables/useConfirm'
-import { formatCurrency } from '../utils/format'
-
-const { getCategories, getItemsByCategory, addItem, updateItem, deleteItem, addCategory, renameCategory, deleteCategory, uncheckAll, getAllItems } = useDb()
+const { getCategories, addItem, updateItem, deleteItem, addCategory, renameCategory, deleteCategory, uncheckAll, getAllItems } = useDb()
 const { success } = useToast()
 const confirm = useConfirm()
 
@@ -93,20 +91,33 @@ async function handleUncheckAll() {
 </script>
 
 <template>
-  <div v-if="loading" class="max-w-lg mx-auto px-4 pb-24 pt-4 text-center text-sm" style="color: #9ca3af;">
+  <div
+    v-if="loading"
+    class="max-w-lg mx-auto px-4 pb-24 pt-4 text-center text-sm"
+    style="color: #9ca3af;"
+  >
     Carregando...
   </div>
-  <div v-else class="max-w-lg mx-auto px-4 pb-24 pt-4 space-y-6">
+  <div
+    v-else
+    class="max-w-lg mx-auto px-4 pb-24 pt-4 space-y-6"
+  >
     <div class="flex items-center gap-2 mb-2">
-      <span class="w-1 h-5 rounded-full" style="background-color: var(--color-gold);"></span>
-      <span class="text-xs font-bold uppercase tracking-wider" style="color: var(--color-gold);">Modo Edição</span>
+      <span
+        class="w-1 h-5 rounded-full"
+        style="background-color: var(--color-gold);"
+      />
+      <span
+        class="text-xs font-bold uppercase tracking-wider"
+        style="color: var(--color-gold);"
+      >Modo Edição</span>
     </div>
 
     <div class="flex gap-2">
       <button
         data-testid="btn-uncheck-all"
-        @click="handleUncheckAll"
         class="flex-1 px-4 py-2.5 rounded-lg text-sm font-bold transition-all duration-200 shadow-sm bg-[var(--color-brand)] text-white hover:bg-[#006666]"
+        @click="handleUncheckAll"
       >
         <div class="flex items-center justify-center gap-2">
           <ShoppingBag class="size-4" />
@@ -117,45 +128,57 @@ async function handleUncheckAll() {
 
     <div class="flex gap-2">
       <input
-        data-testid="input-category-name"
         v-model="newCategoryName"
+        data-testid="input-category-name"
         placeholder="Nova categoria..."
         class="flex-1 px-3 py-2 border border-[#d1d5db] rounded-lg text-sm focus:outline-none focus:border-[var(--color-brand)]"
         @keyup.enter="handleAddCategory"
-      />
+      >
       <button
         data-testid="btn-add-category"
-        @click="handleAddCategory"
         class="px-3 py-2 rounded-lg text-white font-bold transition-all duration-200 bg-[var(--color-brand)] hover:bg-[#006666]"
         aria-label="Adicionar categoria"
+        @click="handleAddCategory"
       >
         <Plus class="size-5" />
       </button>
     </div>
 
-    <div v-for="cat in categories" :key="cat.id" :data-testid="'category-' + cat.id" class="rounded-lg shadow-sm border border-[#e5e7eb] overflow-hidden bg-white">
+    <div
+      v-for="cat in categories"
+      :key="cat.id"
+      :data-testid="'category-' + cat.id"
+      class="rounded-lg shadow-sm border border-[#e5e7eb] overflow-hidden bg-white"
+    >
       <div class="px-4 py-3 border-b border-[#e5e7eb] flex items-center justify-between bg-[#f9fafb]">
         <div class="flex items-center gap-2 flex-1">
           <template v-if="editingCategory === cat.id">
             <input
-              data-testid="input-rename-category"
               v-model="editingCategoryName"
+              data-testid="input-rename-category"
               class="flex-1 px-2 py-1 border border-[#d1d5db] rounded text-sm focus:outline-none focus:border-[var(--color-brand)]"
+              autofocus
               @keyup.enter="handleRename"
               @keyup.escape="editingCategory = null"
-              autofocus
-            />
-            <button data-testid="btn-confirm-rename" @click="handleRename" class="font-bold text-[var(--color-brand)]">
+            >
+            <button
+              data-testid="btn-confirm-rename"
+              class="font-bold text-[var(--color-brand)]"
+              @click="handleRename"
+            >
               <Check class="size-4" />
             </button>
           </template>
           <template v-else>
-            <span class="font-bold" style="color: var(--color-text);">{{ cat.name }}</span>
+            <span
+              class="font-bold"
+              style="color: var(--color-text);"
+            >{{ cat.name }}</span>
             <button
               data-testid="btn-start-rename"
-              @click="startRename(cat)"
               class="text-xs font-medium transition-colors text-[#9ca3af] hover:text-[var(--color-brand)]"
               aria-label="Renomear"
+              @click="startRename(cat)"
             >
               [renomear]
             </button>
@@ -163,11 +186,11 @@ async function handleUncheckAll() {
         </div>
         <button
           data-testid="btn-delete-category"
-          @click="handleDeleteCategory(cat.id)"
           :disabled="!cat.isEditable"
           class="p-1 transition-colors disabled:opacity-30 disabled:cursor-not-allowed text-[#9ca3af]"
           :class="{ 'hover:text-red-500': cat.isEditable }"
           aria-label="Excluir categoria"
+          @click="handleDeleteCategory(cat.id)"
         >
           <Trash2 class="size-4" />
         </button>
@@ -185,8 +208,11 @@ async function handleUncheckAll() {
             :checked="!!item.isChecked"
             class="size-4 rounded cursor-pointer"
             style="accent-color: var(--color-brand);"
-          />
-          <span class="flex-1 text-sm" style="color: var(--color-text);">{{ item.name }}</span>
+          >
+          <span
+            class="flex-1 text-sm"
+            style="color: var(--color-text);"
+          >{{ item.name }}</span>
           <div class="flex items-center gap-1">
             <input
               data-testid="input-item-qty"
@@ -196,7 +222,7 @@ async function handleUncheckAll() {
               title="Quantidade"
               class="w-12 px-1 py-1 text-sm border border-[#e5e7eb] rounded text-center focus:outline-none transition-colors focus:border-[#FFD700]"
               @change="handleUpdateItem(item.id, 'quantity', ($event.target).value)"
-            />
+            >
             <span class="text-xs font-bold text-[#9ca3af]">×</span>
           </div>
           <div class="flex items-center gap-1">
@@ -210,13 +236,13 @@ async function handleUncheckAll() {
               title="Preço"
               class="w-16 px-1 py-1 text-sm border border-[#e5e7eb] rounded text-right focus:outline-none transition-colors focus:border-[var(--color-brand)]"
               @change="handleUpdateItem(item.id, 'price', ($event.target).value)"
-            />
+            >
           </div>
           <button
             data-testid="btn-delete-item"
-            @click="handleDeleteItem(item.id)"
             class="p-1 transition-colors text-[#9ca3af] hover:text-red-500"
             aria-label="Excluir item"
+            @click="handleDeleteItem(item.id)"
           >
             <Trash2 class="size-4" />
           </button>
@@ -226,17 +252,17 @@ async function handleUncheckAll() {
       <div class="px-4 py-2 border-t border-[#e5e7eb] bg-[#f9fafb]">
         <div class="flex gap-2">
           <input
-            data-testid="input-item-name"
             v-model="newItemNames[cat.id]"
+            data-testid="input-item-name"
             :placeholder="'Adicionar em ' + cat.name + '...'"
             class="flex-1 px-2 py-1.5 text-sm border border-[#e5e7eb] rounded focus:outline-none focus:border-[var(--color-brand)]"
             @keyup.enter="handleAddItem(cat.id)"
-          />
+          >
           <button
             data-testid="btn-add-item"
-            @click="handleAddItem(cat.id)"
             class="px-2 py-1.5 rounded font-bold text-white transition-all text-sm bg-[var(--color-brand)] hover:bg-[#006666]"
             aria-label="Adicionar item"
+            @click="handleAddItem(cat.id)"
           >
             <Plus class="size-4" />
           </button>

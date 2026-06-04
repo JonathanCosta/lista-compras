@@ -50,10 +50,10 @@ function cancelPriceEdit() {
       data-testid="checkbox-item"
       type="checkbox"
       :checked="!!item.isChecked"
-      @change="handleCheck"
       class="size-5 rounded cursor-pointer transition-transform duration-150 hover:scale-110"
       style="accent-color: var(--color-brand);"
-    />
+      @change="handleCheck"
+    >
 
     <span
       data-testid="item-name"
@@ -73,8 +73,8 @@ function cancelPriceEdit() {
         <div class="flex items-center gap-1">
           <span class="text-xs text-[#9ca3af]">R$</span>
           <input
-            data-testid="input-item-price"
             v-model="priceBuffer"
+            data-testid="input-item-price"
             type="number"
             min="0"
             step="0.01"
@@ -83,11 +83,11 @@ function cancelPriceEdit() {
             autofocus
             @keyup.enter="confirmPrice"
             @keyup.escape="cancelPriceEdit"
-          />
+          >
           <button
             data-testid="btn-confirm-price"
-            @click="confirmPrice"
             class="font-bold transition-colors text-[var(--color-brand)] hover:text-[#006666]"
+            @click="confirmPrice"
           >
             <Check class="size-4" />
           </button>
@@ -96,13 +96,13 @@ function cancelPriceEdit() {
       <template v-else>
         <button
           data-testid="price-display"
-          @click="startPriceEdit"
           class="text-sm font-bold cursor-pointer transition-colors duration-150"
           :class="[
             { 'line-through': item.isChecked },
             !editingPrice ? 'hover:text-[var(--color-brand)]' : ''
           ]"
           :style="{ color: 'var(--color-text)' }"
+          @click="startPriceEdit"
         >
           {{ formatCurrency(item.price || 0) }}
         </button>
