@@ -117,7 +117,7 @@ lista-compras/
 │   ├── App.vue
 │   ├── style.css
 │   ├── database/db.js           # Schema Dexie + seed
-│   ├── composables/             # useDb, useMode, useToast, useConfirm, useTotais
+│   ├── composables/             # useDb, useMode, useToast, useConfirm, useTotals
 │   ├── components/              # NavBar, EditMode, ExecutionMode, CategoryAccordion,
 │   │                            # ItemRow, QuickAdd, FooterTotals, Toast, ConfirmModal
 │   └── utils/                   # sanitize.js, format.js

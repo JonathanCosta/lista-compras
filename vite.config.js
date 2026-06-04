@@ -21,11 +21,11 @@ export default defineConfig(({ mode }) => ({
         icons: [
           { src: 'pwa-192x192.png', sizes: '192x192', type: 'image/png', purpose: 'any maskable' },
           { src: 'pwa-512x512.png', sizes: '512x512', type: 'image/png', purpose: 'any maskable' },
-          { src: 'apple-touch-icon.png', sizes: '180x180', type: 'image/png', purpose: 'apple-touch-icon' },
+          { src: 'apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
         ],
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,json}'],
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,json}'],
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/,
@@ -33,6 +33,14 @@ export default defineConfig(({ mode }) => ({
             options: {
               cacheName: 'google-fonts-cache',
               expiration: { maxEntries: 10, maxAgeSeconds: 60 * 60 * 24 * 365 },
+            },
+          },
+          {
+            urlPattern: /^https:\/\/fonts\.gstatic\.com\/.*/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'google-fonts-cache',
+              expiration: { maxEntries: 30, maxAgeSeconds: 60 * 60 * 24 * 365 },
             },
           },
           {
