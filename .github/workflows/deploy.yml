@@ -4,11 +4,22 @@ on:
   push:
     branches: [main]
 
+# Permissões necessárias para o deploy nativo via API do GitHub Actions
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+# Garante que deploys simultâneos não se atropelem
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
 
 jobs:
   build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout do código
@@ -35,8 +46,13 @@ jobs:
       - name: Executar Testes E2E
         run: npx playwright test
 
-      - name: Deploy para GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+      # PASSO NOVO: Sobe a pasta dist como um artefato do Pages
+      - name: Upload do artefato de build
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          path: './dist'
+
+      # PASSO NOVO: Faz o deploy direto na infra do GitHub Pages
+      - name: Deploy para GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
