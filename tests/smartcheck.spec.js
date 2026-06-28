@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test'
 
-test.describe('SmartCheck - Lista de Compras PWA', () => {
+test.describe('mercadinho - Lista de Compras PWA', () => {
 
   test('Cenário 1: Fluxo Edição → Execução com verificação de totais', async ({ page }) => {
     await page.goto('/')
@@ -63,7 +63,7 @@ test.describe('SmartCheck - Lista de Compras PWA', () => {
     // Recarregar a página — deve vir do cache do SW
     await page.reload()
     // Aguardar o app shell renderizar — prova que o SW serviu o conteúdo offline
-    await expect(page.locator('text=SmartCheck').first()).toBeVisible({ timeout: 15000 })
+    await expect(page.locator('text=mercadinho').first()).toBeVisible({ timeout: 15000 })
     // Alternar para modo execução (não é persistido entre reloads)
     await page.locator('[data-testid="toggle-mode"]').click()
     await expect(page.locator('[data-testid="input-quick-add"]')).toBeVisible({ timeout: 5000 })
