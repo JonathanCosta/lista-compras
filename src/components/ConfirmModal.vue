@@ -48,7 +48,7 @@ onUnmounted(() => {
             Cancelar
           </button>
           <button
-            class="flex-1 px-4 py-2.5 rounded-lg text-sm font-bold transition-all duration-200 text-white bg-[var(--color-brand)] hover:bg-[#006666]"
+            class="flex-1 px-4 py-2.5 rounded-lg text-sm font-bold transition-all duration-200 text-white bg-[var(--color-brand)] hover:bg-[var(--color-text)]"
             @click="confirm"
           >
             Confirmar

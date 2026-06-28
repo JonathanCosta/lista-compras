@@ -4,7 +4,7 @@ export function formatCurrency(value) {
 }
 
 export function formatShareText(categories, items) {
-  let text = 'SmartCheck - Minha Lista de Compras\n\n'
+  let text = 'Mercadinho\n\n'
   for (const cat of categories) {
     text += `${cat.name}\n`
     const catItems = items.filter(i => i.categoryId === cat.id)
@@ -15,6 +15,6 @@ export function formatShareText(categories, items) {
     }
     text += '\n'
   }
-  text += 'Criado com SmartCheck'
+  text += 'Criado com Mercadinho'
   return text
 }

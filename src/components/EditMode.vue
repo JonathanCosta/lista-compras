@@ -105,18 +105,18 @@ async function handleUncheckAll() {
     <div class="flex items-center gap-2 mb-2">
       <span
         class="w-1 h-5 rounded-full"
-        style="background-color: var(--color-gold);"
+        style="background-color: var(--color-brand);"
       />
       <span
         class="text-xs font-bold uppercase tracking-wider"
-        style="color: var(--color-gold);"
+        style="color: var(--color-brand);"
       >Modo Edição</span>
     </div>
 
     <div class="flex gap-2">
       <button
         data-testid="btn-uncheck-all"
-        class="flex-1 px-4 py-2.5 rounded-lg text-sm font-bold transition-all duration-200 shadow-sm bg-[var(--color-brand)] text-white hover:bg-[#006666]"
+        class="flex-1 px-4 py-2.5 rounded-lg text-sm font-bold transition-all duration-200 shadow-sm bg-[var(--color-brand)] text-white hover:bg-[var(--color-text)]"
         @click="handleUncheckAll"
       >
         <div class="flex items-center justify-center gap-2">
@@ -136,7 +136,7 @@ async function handleUncheckAll() {
       >
       <button
         data-testid="btn-add-category"
-        class="px-3 py-2 rounded-lg text-white font-bold transition-all duration-200 bg-[var(--color-brand)] hover:bg-[#006666]"
+        class="px-3 py-2 rounded-lg text-white font-bold transition-all duration-200 bg-[var(--color-brand)] hover:bg-[var(--color-text)]"
         aria-label="Adicionar categoria"
         @click="handleAddCategory"
       >
@@ -220,7 +220,7 @@ async function handleUncheckAll() {
               :value="item.quantity"
               min="0"
               title="Quantidade"
-              class="w-12 px-1 py-1 text-sm border border-[#e5e7eb] rounded text-center focus:outline-none transition-colors focus:border-[#FFD700]"
+              class="w-12 px-1 py-1 text-sm border border-[#e5e7eb] rounded text-center focus:outline-none transition-colors focus:border-[var(--color-brand)]"
               @change="handleUpdateItem(item.id, 'quantity', ($event.target).value)"
             >
             <span class="text-xs font-bold text-[#9ca3af]">×</span>
@@ -260,7 +260,7 @@ async function handleUncheckAll() {
           >
           <button
             data-testid="btn-add-item"
-            class="px-2 py-1.5 rounded font-bold text-white transition-all text-sm bg-[var(--color-brand)] hover:bg-[#006666]"
+            class="px-2 py-1.5 rounded font-bold text-white transition-all text-sm bg-[var(--color-brand)] hover:bg-[var(--color-text)]"
             aria-label="Adicionar item"
             @click="handleAddItem(cat.id)"
           >

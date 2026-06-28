@@ -10,11 +10,11 @@ export default defineConfig(({ mode }) => ({
     VitePWA({
       registerType: 'autoUpdate',
       manifest: {
-        name: 'SmartCheck - Compras Inteligentes',
+        name: 'mercadinho',
         short_name: 'SmartCheck',
         description: 'PWA de lista de compras inteligente, reutilizável e offline-first',
-        theme_color: '#008080',
-        background_color: '#008080',
+        theme_color: '#a187ac',
+        background_color: '#a187ac',
         display: 'standalone',
         scope: '/lista-compras/',
         start_url: '/lista-compras/',

@@ -22,7 +22,7 @@ async function shareList() {
   if (navigator.share) {
     try {
       await navigator.share({
-        title: 'SmartCheck - Minha Lista',
+        title: 'mercadinho',
         text,
         url: window.location.href,
       })
@@ -49,7 +49,7 @@ async function exportBackup() {
   const url = URL.createObjectURL(blob)
   const a = document.createElement('a')
   a.href = url
-  a.download = `smartcheck-backup-${new Date().toISOString().slice(0, 10)}.json`
+  a.download = `mercadinho-backup-${new Date().toISOString().slice(0, 10)}.json`
   a.click()
   URL.revokeObjectURL(url)
 }
@@ -82,7 +82,7 @@ async function handleImport(e) {
       <div class="flex items-center gap-2">
         <img
           src="/favicon.svg"
-          alt="SmartCheck"
+          alt="mercadinho"
           class="size-7"
         >
         <div class="flex flex-col leading-tight">
@@ -90,9 +90,8 @@ async function handleImport(e) {
             class="text-base font-extrabold"
             style="color: var(--color-brand);"
           >
-            SmartCheck
+            mercadinho
           </h1>
-          <span class="text-[10px] font-medium tracking-tight text-gray-400">Compras Inteligentes</span>
         </div>
       </div>
 
@@ -101,7 +100,7 @@ async function handleImport(e) {
           data-testid="toggle-mode"
           :style="mode === 'edit'
             ? { backgroundColor: 'var(--color-brand)', color: '#ffffff' }
-            : { backgroundColor: '#FFD700', color: '#333333' }"
+            : { backgroundColor: 'var(--color-bg)', color: '#333333' }"
           class="flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-semibold transition-all duration-200"
           :aria-label="mode === 'edit' ? 'Alternar para modo execução' : 'Alternar para modo edição'"
           @click="toggleMode"

@@ -86,7 +86,7 @@ function cancelPriceEdit() {
           >
           <button
             data-testid="btn-confirm-price"
-            class="font-bold transition-colors text-[var(--color-brand)] hover:text-[#006666]"
+            class="font-bold transition-colors text-[var(--color-brand)] hover:text-[var(--color-text)]"
             @click="confirmPrice"
           >
             <Check class="size-4" />

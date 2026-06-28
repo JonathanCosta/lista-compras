@@ -53,7 +53,7 @@ async function handleAdd() {
     </select>
     <button
       data-testid="btn-quick-add"
-      class="px-3 py-2 rounded-lg text-white font-bold transition-all duration-200 bg-[var(--color-brand)] hover:bg-[#006666]"
+      class="px-3 py-2 rounded-lg text-white font-bold transition-all duration-200 bg-[var(--color-brand)] hover:bg-[var(--color-text)]"
       aria-label="Adicionar item"
       @click="handleAdd"
     >

@@ -43,11 +43,11 @@ function toggleCategory(id) {
     <div class="flex items-center gap-2 mb-4">
       <span
         class="w-1 h-5 rounded-full"
-        style="background-color: var(--color-brand);"
+        style="background-color: var(--color-text);"
       />
       <span
         class="text-xs font-bold uppercase tracking-wider"
-        style="color: var(--color-brand);"
+        style="color: var(--color-text);"
       >Modo Compras</span>
     </div>
 
